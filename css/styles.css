@@ -728,27 +728,69 @@ a   { text-decoration: none; color: inherit; }
 }
 
 /* ============================================================
+   VIVE MIS XV
+   ============================================================ */
+#vive-xv { text-align: center; }
+
+.vive-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.vive-text {
+  font-family: var(--ff-serif);
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 420px;
+  line-height: 1.65;
+}
+
+.vive-qr {
+  background: rgba(255,255,255,.18);
+  border: 2px solid rgba(255,255,255,.40);
+  border-radius: 20px;
+  padding: 1.2rem;
+}
+
+.vive-qr img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 10px;
+  display: block;
+}
+
+.vive-hashtag {
+  font-family: var(--ff-serif);
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.9);
+  line-height: 1.7;
+}
+
+.vive-hashtag strong {
+  display: block;
+  font-family: var(--ff-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  color: #fff;
+}
+
+/* ============================================================
    CONFIRM SECTION
    ============================================================ */
 #confirmar { text-align: center; }
+#confirmar .s-pre   { color: var(--clr-gray); }
+#confirmar .s-title { color: var(--clr-pink-text); }
+#confirmar .gold-bar { background: var(--clr-pink); }
+
 .confirm-text {
   font-family: var(--ff-serif);
   font-size: 1.1rem;
-  color: rgba(255,255,255,.9);      /* blanco sobre sección rosa */
+  color: var(--clr-gray-mid);
   margin-bottom: 2.2rem;
-}
-
-/* Botón WhatsApp sobre sección rosa — blanco con texto rosa */
-.section-pink .btn-whatsapp {
-  background: #fff;
-  color: var(--clr-pink-text);
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-}
-.section-pink .btn-whatsapp:hover {
-  background: var(--clr-white);
-  color: var(--clr-gray-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0,0,0,.12);
 }
 
 /* ============================================================
