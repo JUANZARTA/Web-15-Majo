@@ -132,6 +132,11 @@ const cdHours    = document.getElementById('cd-hours');
 const cdMinutes  = document.getElementById('cd-minutes');
 const cdSeconds  = document.getElementById('cd-seconds');
 
+const crDays     = document.getElementById('cr-days');
+const crHours    = document.getElementById('cr-hours');
+const crMinutes  = document.getElementById('cr-minutes');
+const crSeconds  = document.getElementById('cr-seconds');
+
 function pad(n) { return String(n).padStart(2, '0'); }
 
 function animateFlip(el, newVal) {
@@ -152,10 +157,20 @@ function tick() {
       '<p style="font-family:var(--ff-script);font-size:2rem;color:#fff;letter-spacing:.1em">¡Hoy es el gran día! ✨</p>';
     return;
   }
-  animateFlip(cdDays,    pad(Math.floor(diff / 86400000)));
-  animateFlip(cdHours,   pad(Math.floor((diff % 86400000) / 3600000)));
-  animateFlip(cdMinutes, pad(Math.floor((diff % 3600000)  / 60000)));
-  animateFlip(cdSeconds, pad(Math.floor((diff % 60000)    / 1000)));
+  const days    = pad(Math.floor(diff / 86400000));
+  const hours   = pad(Math.floor((diff % 86400000) / 3600000));
+  const minutes = pad(Math.floor((diff % 3600000)  / 60000));
+  const seconds = pad(Math.floor((diff % 60000)    / 1000));
+
+  animateFlip(cdDays,    days);
+  animateFlip(cdHours,   hours);
+  animateFlip(cdMinutes, minutes);
+  animateFlip(cdSeconds, seconds);
+
+  if (crDays)    crDays.textContent    = days;
+  if (crHours)   crHours.textContent   = hours;
+  if (crMinutes) crMinutes.textContent = minutes;
+  if (crSeconds) crSeconds.textContent = seconds;
 }
 tick();
 setInterval(tick, 1000);
@@ -226,6 +241,41 @@ musicBtn.addEventListener('click', () => {
     bgMusic.pause();
     musicBtn.classList.remove('playing');
     musicBtn.classList.add('paused');
+  }
+});
+
+/* ============================================================
+   XV MODALS — Vestuario & Notas
+   ============================================================ */
+document.querySelectorAll('[data-modal]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.modal).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+document.querySelectorAll('[data-close]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.close).classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+document.querySelectorAll('.xv-modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.xv-modal.active').forEach(m => {
+      m.classList.remove('active');
+      document.body.style.overflow = '';
+    });
   }
 });
 

@@ -3,7 +3,7 @@
    ============================================================ */
 :root {
   /* Paleta principal */
-  --clr-white:       #FEFCF2;   /* blanco cálido — fondos claros */
+  --clr-white:       #ffffff;   /* blanco cálido — fondos claros */
   --clr-pink:        #F5D1D3;   /* rosa suave — fondos de sección / acentos */
   --clr-pink-hover:  #E8B8BB;   /* rosa hover — botones / interacción */
   --clr-pink-text:   #C9A3A5;   /* rosa más oscuro — texto rosa sobre fondo claro */
@@ -29,7 +29,7 @@
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html  { scroll-behavior: smooth; }
+html  { scroll-behavior: smooth; font-size: 18px; }
 body  {
   font-family: var(--ff-sans);
   background: var(--clr-white);
@@ -129,7 +129,7 @@ a   { text-decoration: none; color: inherit; }
 .nav-logo {
   font-family: var(--ff-script);
   font-size: 1.8rem;
-  color: var(--clr-pink);
+  color: var(--clr-white);
 }
 
 .nav-links { display: flex; gap: 2rem; }
@@ -393,7 +393,7 @@ a   { text-decoration: none; color: inherit; }
 .s-pre {
   font-family: var(--ff-serif);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: var(--clr-gray);           /* gris — sobre fondo blanco */
   letter-spacing: .1em;
   margin-bottom: .4rem;
@@ -483,23 +483,47 @@ a   { text-decoration: none; color: inherit; }
    ============================================================ */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  max-width: 860px;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 260px 260px 200px;
+  gap: .7rem;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .gallery-item {
   position: relative;
-  aspect-ratio: 3/4;
   overflow: hidden;
   border-radius: var(--radius);
   cursor: zoom-in;
 }
-.gallery-item:nth-child(1) { border-radius: var(--radius) 4px var(--radius) 4px; }
-.gallery-item:nth-child(2) { border-radius: 4px var(--radius) 4px var(--radius); }
-.gallery-item:nth-child(3) { border-radius: 4px var(--radius) 4px var(--radius); }
-.gallery-item:nth-child(4) { border-radius: var(--radius) 4px var(--radius) 4px; }
+
+/* img grande izquierda — ocupa filas 1 y 2 */
+.gallery-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  border-radius: var(--radius) 4px 4px var(--radius);
+}
+
+/* pequeña arriba derecha */
+.gallery-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  border-radius: 4px var(--radius) 4px 4px;
+}
+
+/* pequeña abajo derecha */
+.gallery-item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+  border-radius: 4px 4px var(--radius) 4px;
+}
+
+/* franja panorámica inferior */
+.gallery-item:nth-child(4) {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  border-radius: 4px 4px var(--radius) var(--radius);
+}
 
 .gallery-item img {
   width: 100%; height: 100%;
@@ -598,7 +622,7 @@ a   { text-decoration: none; color: inherit; }
 
 .tl-time {
   font-family: var(--ff-serif);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--clr-pink-text);      /* rosa oscuro sobre fondo claro */
   text-align: right;
 }
@@ -616,11 +640,11 @@ a   { text-decoration: none; color: inherit; }
 
 .tl-content h4 {
   font-family: var(--ff-serif);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--clr-gray-dark);      /* gris oscuro sobre fondo claro */
   margin-bottom: .2rem;
 }
-.tl-content p { font-size: .82rem; color: var(--clr-gray); }
+.tl-content p { font-size: 1rem; color: var(--clr-gray); }
 
 .tl-item:nth-child(odd) .tl-time    { grid-column: 3; text-align: left; }
 .tl-item:nth-child(odd) .tl-dot     { grid-column: 2; grid-row: 1; }
@@ -642,7 +666,15 @@ a   { text-decoration: none; color: inherit; }
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
 }
-.gift-icon { font-size: 3rem; margin-bottom: 1rem; }
+.gift-icon {
+  width: 80px;
+  height: 68px;
+  margin: 0 auto 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gift-icon svg { width: 100%; height: 100%; }
 .gift-card h3 {
   font-family: var(--ff-script);
   font-size: 2.6rem;
@@ -692,7 +724,7 @@ a   { text-decoration: none; color: inherit; }
   padding: .9rem 2.2rem;
   border-radius: 50px;
   font-family: var(--ff-sans);
-  font-size: .82rem;
+  font-size: .95rem;
   font-weight: 500;
   letter-spacing: .1em;
   text-decoration: none;
@@ -794,6 +826,462 @@ a   { text-decoration: none; color: inherit; }
 }
 
 /* ============================================================
+   FRASE — cita de la quinceañera
+   ============================================================ */
+.quote-block {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quote-mark {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  color: rgba(255,255,255,.35);
+  line-height: .6;
+}
+.quote-mark.open  { margin-bottom: 1.2rem; }
+.quote-mark.close { margin-top: 1.2rem; }
+
+.quote-text {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.9;
+  color: rgba(255,255,255,.92);
+}
+
+/* ============================================================
+   PADRES
+   ============================================================ */
+.padres-block {
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.padres-intro {
+  font-family: var(--ff-script);
+  font-size: 2.4rem;
+  color: var(--clr-pink-text);
+  line-height: 1.5;
+  margin-bottom: 2.8rem;
+}
+
+.padres-grupo { margin-bottom: 2rem; }
+.padres-grupo:last-child { margin-bottom: 0; }
+
+.padres-label {
+  font-family: var(--ff-sans);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: var(--clr-pink-text);
+  margin-bottom: .8rem;
+}
+
+.padres-nombre {
+  font-family: var(--ff-serif);
+  font-size: 1.3rem;
+  color: var(--clr-gray-dark);
+  line-height: 1.65;
+}
+
+/* ============================================================
+   CUENTA REGRESIVA — sección círculos
+   ============================================================ */
+#cuenta-regresiva { text-align: center; }
+
+.cr-fecha {
+  font-family: var(--ff-script);
+  font-size: 3rem;
+  color: rgba(255,255,255,.92);
+  margin-bottom: 2.8rem;
+}
+
+.cr-circles {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.cr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+}
+
+.cr-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cr-circle span {
+  font-family: var(--ff-serif);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.cr-label {
+  font-family: var(--ff-sans);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  color: rgba(255,255,255,.82);
+}
+
+@media (max-width: 480px) {
+  .cr-circle { width: 80px; height: 80px; }
+  .cr-circle span { font-size: 1.8rem; }
+  .cr-circles { gap: 1rem; }
+}
+
+/* ============================================================
+   EVENT CARD — Fecha / Hora / Lugar  (estilo Image #27)
+   ============================================================ */
+.event-card {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+  /* sin tarjeta: sin fondo, sin sombra, sin borde */
+}
+
+.event-card-title {
+  font-family: var(--ff-script);
+  font-size: 3.8rem;
+  color: var(--clr-pink-text);
+  margin-bottom: 1.6rem;
+}
+
+.event-card-icon {
+  width: 90px;
+  margin: 0 auto 1.4rem;
+}
+
+.event-card-sep {
+  width: 50px;
+  height: 1px;
+  background: var(--clr-gray-light);
+  margin: 1.4rem auto;
+}
+
+.event-card-date {
+  font-family: var(--ff-serif);
+  font-size: 1.6rem;
+  color: var(--clr-gray-dark);
+  margin-bottom: .5rem;
+}
+
+.event-card-time {
+  font-family: var(--ff-serif);
+  font-size: 1.4rem;
+  color: var(--clr-gray-mid);
+  margin-bottom: .5rem;
+}
+
+.event-card-venue {
+  font-family: var(--ff-serif);
+  font-size: 1.6rem;
+  color: var(--clr-gray-dark);
+  margin-bottom: .3rem;
+}
+
+.event-card-address {
+  font-family: var(--ff-serif);
+  font-size: 1.1rem;
+  color: var(--clr-gray);
+  margin-bottom: 2.2rem;
+}
+
+.btn-outline-pill {
+  display: inline-block;
+  padding: .65rem 2rem;
+  border: 1px solid var(--clr-pink);
+  border-radius: 50px;
+  font-family: var(--ff-serif);
+  font-size: .95rem;
+  color: var(--clr-pink-text);
+  text-decoration: none;
+  transition: all var(--t);
+}
+.btn-outline-pill:hover {
+  background: var(--clr-pink);
+  color: #fff;
+}
+
+/* ============================================================
+   EXTRA CARDS — Vestuario / Música / Notas  (estilo Image #24)
+   ============================================================ */
+.extra-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.extra-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1.8rem 2rem;
+  border: 1.5px solid var(--clr-pink);
+  border-radius: 20px;
+  gap: 1rem;
+  background: #fff;
+}
+
+.extra-card-title {
+  font-family: var(--ff-sans);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  color: var(--clr-pink-text);
+}
+
+.extra-card-icon {
+  width: 66px;
+  height: 66px;
+  color: var(--clr-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.extra-card-icon svg { width: 100%; height: 100%; }
+
+.extra-card-text {
+  font-family: var(--ff-serif);
+  font-size: 1rem;
+  color: var(--clr-gray-mid);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.btn-extra-card {
+  display: inline-block;
+  padding: .55rem 1.5rem;
+  border: 1.5px solid var(--clr-pink);
+  border-radius: 50px;
+  font-family: var(--ff-serif);
+  font-size: .9rem;
+  color: var(--clr-pink-text);
+  background: none;
+  cursor: pointer;
+  transition: all var(--t);
+  text-decoration: none;
+}
+.btn-extra-card:hover {
+  background: var(--clr-pink);
+  color: #fff;
+}
+
+/* ============================================================
+   XV MODALS — Vestuario & Notas
+   ============================================================ */
+.xv-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.xv-modal.active { opacity: 1; visibility: visible; }
+
+.xv-modal-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 340px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(.9);
+  transition: transform .3s ease;
+}
+.xv-modal.active .xv-modal-card { transform: scale(1); }
+
+.xv-modal-close {
+  position: absolute;
+  top: 1rem; right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--clr-gray);
+  cursor: pointer;
+  padding: .2rem;
+  line-height: 1;
+  transition: color var(--t);
+}
+.xv-modal-close:hover { color: var(--clr-gray-dark); }
+
+.xv-modal-label {
+  font-family: var(--ff-sans);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .24em;
+  color: var(--clr-pink-text);
+  margin-bottom: 1rem;
+}
+
+.xv-modal-divider {
+  width: 80%;
+  height: 1px;
+  background: var(--clr-gray-light);
+  margin: 1.4rem auto;
+}
+
+.xv-modal-text {
+  font-family: var(--ff-serif);
+  font-size: 1rem;
+  color: var(--clr-gray-mid);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Silhouettes (modal vestuario) */
+.xv-modal-silhouettes {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: .5rem 0 .8rem;
+}
+.silhouette-col { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+.silhouette-col svg { width: 56px; height: 90px; }
+.silhouette-role {
+  font-family: var(--ff-sans);
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  color: var(--clr-pink-text);
+}
+.silhouette-desc {
+  font-family: var(--ff-serif);
+  font-size: .95rem;
+  color: var(--clr-gray-mid);
+}
+
+/* Color swatches */
+.color-swatches {
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  margin-top: .8rem;
+}
+.color-swatch {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Notas modal items */
+.nota-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: 1.8rem;
+}
+.nota-item:last-child { margin-bottom: 0; }
+
+.nota-icon {
+  width: 46px; height: 46px;
+  color: var(--clr-pink);
+}
+.nota-icon svg { width: 100%; height: 100%; }
+
+.nota-title {
+  font-family: var(--ff-sans);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: var(--clr-pink-text);
+}
+.nota-text {
+  font-family: var(--ff-serif);
+  font-size: .95rem;
+  color: var(--clr-gray-mid);
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+@media (max-width: 768px) {
+  .extra-cards-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   VIVE XV — botón subir fotos
+   ============================================================ */
+.btn-upload-photos {
+  display: inline-block;
+  padding: .75rem 2.2rem;
+  background: #fff;
+  color: var(--clr-pink-text);
+  border: 2px solid rgba(255,255,255,.8);
+  border-radius: 50px;
+  font-family: var(--ff-serif);
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  text-decoration: none;
+  transition: all var(--t);
+  margin-top: .5rem;
+}
+.btn-upload-photos:hover {
+  background: var(--clr-pink-hover);
+  color: #fff;
+  border-color: var(--clr-pink-hover);
+}
+
+/* ============================================================
+   WAVE SEPARATOR — divisor decorativo entre secciones
+   ============================================================ */
+.wave-sep {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+  background: var(--clr-white);
+}
+.wave-sep svg {
+  display: block;
+  width: 100%;
+  height: 110px;
+}
+
+/* ola sobre fondo blanco: el SVG se voltea para que apunte hacia arriba */
+.wave-sep--inv {
+  transform: scaleY(-1);
+}
+
+/* título "Obsequios" en rosa sobre fondo blanco */
+#regalos .s-title { color: var(--clr-pink-text); }
+
+/* ============================================================
    FOOTER — fondo rosa, texto blanco
    ============================================================ */
 footer {
@@ -821,6 +1309,21 @@ footer {
   font-style: italic;
   font-size: 1rem;
   color: rgba(255,255,255,.7);
+}
+
+.footer-credit {
+  background: var(--clr-white);
+  text-align: center;
+  padding: .85rem 2rem;
+  border-top: 1px solid var(--clr-gray-light);
+  font-family: var(--ff-sans);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  color: var(--clr-gray);
+}
+.footer-credit span {
+  color: var(--clr-pink-text);
+  font-weight: 500;
 }
 
 /* ============================================================
@@ -900,7 +1403,14 @@ footer {
   .cd-item { min-width: 60px; padding: .7rem .7rem; }
   .cd-num  { font-size: 1.7rem; }
 
-  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 320px 240px 240px 200px;
+  }
+  .gallery-item:nth-child(1) { grid-column: 1; grid-row: 1; border-radius: var(--radius); }
+  .gallery-item:nth-child(2) { grid-column: 1; grid-row: 2; border-radius: var(--radius); }
+  .gallery-item:nth-child(3) { grid-column: 1; grid-row: 3; border-radius: var(--radius); }
+  .gallery-item:nth-child(4) { grid-column: 1; grid-row: 4; border-radius: var(--radius); }
 
   .timeline::before { left: 14px; }
   .tl-item {

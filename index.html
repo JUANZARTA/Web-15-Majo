@@ -32,8 +32,8 @@
     <div class="nav-links" role="list">
       <a href="#detalles">Detalles</a>
       <a href="#galeria">Galería</a>
+      <a href="#extras">Información</a>
       <a href="#itinerario">Itinerario</a>
-      <a href="#ubicacion">Ubicación</a>
       <a href="#confirmar">Confirmar</a>
     </div>
 
@@ -46,8 +46,8 @@
   <div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Menú móvil">
     <a href="#detalles">Detalles</a>
     <a href="#galeria">Galería</a>
+    <a href="#extras">Información</a>
     <a href="#itinerario">Itinerario</a>
-    <a href="#ubicacion">Ubicación</a>
     <a href="#confirmar">Confirmar</a>
   </div>
 
@@ -103,40 +103,93 @@
   </section>
 
   <!-- ══════════════════════════════
-       DETALLES DEL EVENTO
+       FRASE — mensaje de la quinceañera
   ══════════════════════════════ -->
-  <section id="detalles" class="section" aria-label="Detalles del evento">
-    <div class="section-header">
-      <p class="s-pre reveal">Estás cordialmente invitado a</p>
-      <h2 class="s-title reveal reveal-d1">Detalles del Evento</h2>
-      <div class="gold-bar reveal reveal-d2"></div>
+  <section id="frase" class="section section-pink" aria-label="Mensaje de Laura Sofia">
+    <div class="quote-block reveal">
+      <span class="quote-mark open">&#8220;</span>
+      <p class="quote-text">Con la bendición de Dios, el amor de mi familia y la ilusión de un sueño que hoy se hace realidad, quiero que me acompañes a celebrar mis XV años. Tu presencia hará de esta fecha un recuerdo aún más especial e inolvidable.</p>
+      <span class="quote-mark close">&#8221;</span>
     </div>
+  </section>
 
-    <div class="details-grid">
-      <div class="detail-card reveal reveal-d1">
-        <div class="detail-icon">📅</div>
-        <h3>Fecha</h3>
-        <p>Sábado<br />13 de Junio, 2026</p>
+  <!-- ══════════════════════════════
+       PADRES
+  ══════════════════════════════ -->
+  <section id="padres" class="section section-white" aria-label="Padres de la quinceañera">
+    <div class="padres-block">
+      <p class="padres-intro reveal">Con la bendición de Dios,<br />mis padres y padrinos</p>
+
+      <div class="padres-grupo reveal reveal-d1">
+        <p class="padres-label">Mis Padres</p>
+        <p class="padres-nombre">Mauricio Rosas</p>
+        <p class="padres-nombre">Karina Muñoz</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       CUENTA REGRESIVA — sección
+  ══════════════════════════════ -->
+  <section id="cuenta-regresiva" class="section section-pink" aria-label="Cuenta regresiva">
+    <p class="cr-fecha reveal">Sábado 13 · Junio</p>
+    <div class="cr-circles reveal reveal-d1" aria-label="Tiempo restante">
+      <div class="cr-item">
+        <div class="cr-circle"><span id="cr-days">00</span></div>
+        <span class="cr-label">DÍAS</span>
+      </div>
+      <div class="cr-item">
+        <div class="cr-circle"><span id="cr-hours">00</span></div>
+        <span class="cr-label">HORAS</span>
+      </div>
+      <div class="cr-item">
+        <div class="cr-circle"><span id="cr-minutes">00</span></div>
+        <span class="cr-label">MINS</span>
+      </div>
+      <div class="cr-item">
+        <div class="cr-circle"><span id="cr-seconds">00</span></div>
+        <span class="cr-label">SECS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       DETALLES — fecha, hora y lugar
+  ══════════════════════════════ -->
+  <section id="detalles" class="section section-white" aria-label="Detalles del evento">
+    <div class="event-card reveal">
+      <h2 class="event-card-title">Celebración</h2>
+
+      <div class="event-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 80 96" fill="none" stroke="#F5D1D3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- corazón -->
+          <path d="M40 18 C40 18 34 11 27 14 C20 17 21 26 40 35 C59 26 60 17 53 14 C46 11 40 18 40 18Z"/>
+          <!-- piso 1 (arriba) -->
+          <rect x="26" y="35" width="28" height="14" rx="3"/>
+          <!-- piso 2 (medio) -->
+          <rect x="16" y="49" width="48" height="16" rx="3"/>
+          <!-- piso 3 (base) -->
+          <rect x="8"  y="65" width="64" height="18" rx="3"/>
+          <!-- pedestal -->
+          <line x1="4"  y1="84" x2="76" y2="84"/>
+          <rect x="28" y="84" width="24" height="5" rx="2"/>
+        </svg>
       </div>
 
-      <div class="detail-card reveal reveal-d2">
-        <div class="detail-icon">🕖</div>
-        <h3>Hora</h3>
-        <p>7:30 PM</p>
-      </div>
+      <div class="event-card-sep"></div>
 
-      <div class="detail-card reveal reveal-d3">
-        <div class="detail-icon">🏛️</div>
-        <h3>Lugar</h3>
-        <p>Casona El Cortijo<br />Camino Real</p>
-      </div>
+      <p class="event-card-date">Sábado, 13 de Junio · 2026</p>
+      <p class="event-card-time">7:30 PM</p>
+      <p class="event-card-venue">Casona El Cortijo</p>
+      <p class="event-card-address">Camino Real</p>
 
-      <div class="detail-card reveal reveal-d4">
-        <div class="detail-icon">👗</div>
-        <h3>Vestimenta</h3>
-        <p>Traje Formal · Gala</p>
-        <p class="dress-note">Se reserva el color rosado pastel y toda clase de rosados</p>
-      </div>
+      <a
+        href="https://maps.app.goo.gl/qbPgNbGN4c3bksdD6"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline-pill"
+        aria-label="Abrir en Google Maps"
+      > Ir a Google Maps</a>
     </div>
   </section>
 
@@ -223,56 +276,90 @@
 
     </div>
   </section>
+  
+  <!-- ola decorativa -->
+  <div class="wave-sep" aria-hidden="true">
+    <svg viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,75 C200,30 400,100 720,60 C1000,25 1260,85 1440,45 L1440,110 L0,110 Z"
+            fill="#F5D1D3" opacity="0.28"/>
+      <path d="M0,55 C250,15 550,90 900,50 C1150,20 1320,70 1440,30 L1440,110 L0,110 Z"
+            fill="#F5D1D3" opacity="0.15"/>
+      <path d="M0,42 C300,5 700,78 1050,38 C1250,12 1380,55 1440,22"
+            fill="none" stroke="#F5D1D3" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+  </div>
 
   <!-- ══════════════════════════════
-       OBSEQUIOS
+       EXTRAS — Vestuario · Música · Notas
   ══════════════════════════════ -->
-  <section id="regalos" class="section section-pink" aria-label="Información de obsequios">
+  <section id="extras" class="section section-white" aria-label="Información adicional">
     <div class="section-header">
-      <p class="s-pre reveal">Con tu presencia ya es suficiente</p>
-      <h2 class="s-title reveal reveal-d1">Obsequios</h2>
+      <p class="s-pre reveal">Todo lo que necesitás saber</p>
+      <h2 class="s-title reveal reveal-d1">Información</h2>
       <div class="gold-bar reveal reveal-d2"></div>
     </div>
 
-    <div class="gift-card reveal reveal-d3">
-      <div class="gift-icon">💌</div>
-      <h3>Lluvia de Sobres</h3>
-      <p>
-        Si deseas hacerle un regalo a Laura Sofia,<br />
-        una lluvia de sobres será muy apreciada.<br />
-        Tu cariño y presencia son el mejor regalo.
-      </p>
+    <div class="extra-cards-grid">
+
+      <!-- Vestuario -->
+      <div class="extra-card reveal reveal-d1">
+        <h3 class="extra-card-title">VESTUARIO</h3>
+        <div class="extra-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 42" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 5 L28 21 L6 37 Z"/>
+            <path d="M58 5 L36 21 L58 37 Z"/>
+            <ellipse cx="32" cy="21" rx="5.5" ry="7"/>
+          </svg>
+        </div>
+        <p class="extra-card-text">Conoce las sugerencias del vestuario</p>
+        <button class="btn-extra-card" data-modal="modal-vestuario">Ver sugerencias</button>
+      </div>
+
+      <!-- Música -->
+      <div class="extra-card reveal reveal-d2">
+        <h3 class="extra-card-title">MÚSICA</h3>
+        <div class="extra-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="26" cy="38" r="20"/>
+            <circle cx="26" cy="38" r="7"/>
+            <circle cx="26" cy="38" r="2.5" fill="currentColor" stroke="none"/>
+            <path d="M46 14 L58 10 L58 21"/>
+            <path d="M58 21 C58 25 55 27 55 27"/>
+            <path d="M46 14 L46 25"/>
+            <path d="M46 25 C46 29 43 31 43 31"/>
+          </svg>
+        </div>
+        <p class="extra-card-text">Sugiérenos una canción que no puede faltar en la fiesta</p>
+        <a
+          href="https://wa.me/573007447248?text=Hola!%20Quiero%20sugerir%20una%20canci%C3%B3n%20para%20los%20XV%20de%20Laura%20Sofia%20%F0%9F%8E%B5"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-extra-card"
+        >Enviar sugerencias</a>
+      </div>
+
+      <!-- NOTAS — desactivado temporalmente, no eliminar
+      <div class="extra-card reveal reveal-d3">
+        <h3 class="extra-card-title">NOTAS</h3>
+        <div class="extra-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 58" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="10" width="36" height="44" rx="4"/>
+            <path d="M18 10 L18 6 Q24 3 30 6 L30 10"/>
+            <line x1="14" y1="24" x2="34" y2="24"/>
+            <line x1="14" y1="32" x2="34" y2="32"/>
+            <line x1="14" y1="40" x2="26" y2="40"/>
+          </svg>
+        </div>
+        <p class="extra-card-text">Conoce las recomendaciones de mi fiesta</p>
+        <button class="btn-extra-card" data-modal="modal-notas">Ver recomendaciones</button>
+      </div>
+      -->
+
     </div>
   </section>
 
-  <!-- ══════════════════════════════
-       UBICACIÓN
-  ══════════════════════════════ -->
-  <section id="ubicacion" class="section" aria-label="Ubicación del evento">
-    <div class="section-header">
-      <p class="s-pre reveal">Nos vemos en</p>
-      <h2 class="s-title reveal reveal-d1">Ubicación</h2>
-      <div class="gold-bar reveal reveal-d2"></div>
-    </div>
-
-    <div class="location-card reveal reveal-d3">
-      <div class="location-icon">🏛️</div>
-      <h3>Casona El Cortijo</h3>
-      <p class="location-sub">Camino Real</p>
-      <a
-        href="https://maps.app.goo.gl/qbPgNbGN4c3bksdD6"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-pink"
-        aria-label="Abrir en Google Maps"
-      >
-        📍 Cómo llegar
-      </a>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════
-       VIVE MIS XV
+    <!-- ══════════════════════════════
+       VIVE MIS XV QR
   ══════════════════════════════ -->
   <section id="vive-xv" class="section section-pink" aria-label="Comparte las fotos">
     <div class="section-header">
@@ -287,9 +374,53 @@
         <img src="Fotos/QR Fotos.png" alt="QR para subir fotos" />
       </div>
 
+      <a
+        href="https://drive.google.com/drive/folders/1c-wCRJR10zZNJLzaV_aD5QQRVMUcOAWv?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-upload-photos reveal reveal-d3"
+      >
+        📷 Subir fotos
+      </a>
+
       <p class="vive-hashtag">En Instagram usa el hashtag<br /><strong>#XVLauraSofia</strong></p>
     </div>
   </section>
+
+  <!-- ══════════════════════════════
+       OBSEQUIOS
+  ══════════════════════════════ -->
+  <section id="regalos" class="section section-white" aria-label="Información de obsequios">
+    <div class="section-header">
+      <p class="s-pre reveal">Con tu presencia ya es suficiente</p>
+      <h2 class="s-title reveal reveal-d1">Obsequios</h2>
+      <div class="gold-bar reveal reveal-d2"></div>
+    </div>
+
+    <div class="gift-card reveal reveal-d3">
+      <div class="gift-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 56" fill="none">
+          <rect x="2" y="10" width="68" height="44" rx="5" stroke="#C9A3A5" stroke-width="2.5"/>
+          <path d="M2 18 L36 38 L70 18" stroke="#C9A3A5" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M36 24 C36 24 27 16.5 27 11.5 C27 7.8 29.7 5.5 36 9.5 C42.3 5.5 45 7.8 45 11.5 C45 16.5 36 24 36 24Z" fill="#C9A3A5" opacity="0.75"/>
+        </svg>
+      </div>
+      <h3>Lluvia de Sobres</h3>
+      <p>
+        Si deseas hacerle un regalo a Laura Sofia,<br />
+        una lluvia de sobres será muy apreciada.<br />
+        Tu cariño y presencia son el mejor regalo.
+      </p>
+    </div>
+  </section>
+
+  <div class="wave-sep wave-sep--inv" aria-hidden="true">
+    <svg viewBox="0 0 1440 110" preserveAspectRatio="none">
+      <path d="M0,75 C200,30 400,100 720,60 C1000,25 1260,85 1440,45 L1440,110 L0,110 Z" fill="#F5D1D3" opacity="0.28"/>
+      <path d="M0,55 C250,15 550,90 900,50 C1150,20 1320,70 1440,30 L1440,110 L0,110 Z" fill="#F5D1D3" opacity="0.15"/>
+      <path d="M0,42 C300,5 700,78 1050,38 C1250,12 1380,55 1440,22" fill="none" stroke="#F5D1D3" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+  </div>
 
   <!-- ══════════════════════════════
        CONFIRMAR ASISTENCIA
@@ -302,7 +433,7 @@
     </div>
 
     <p class="confirm-text reveal reveal-d3">
-      Por favor confirma tu asistencia antes del 6 de Junio de 2026
+      Por favor confirma tu asistencia antes del 30 de Mayo de 2026
     </p>
 
     <div class="reveal reveal-d4" style="text-align:center">
@@ -330,6 +461,10 @@
     <p class="footer-date">13 · Junio · 2026</p>
     <p class="footer-tagline">Con amor y alegría, celebramos tus XV años ✦</p>
   </footer>
+
+  <div class="footer-credit">
+    <p>© 2026 · Desarrollado por <span>Juan Camilo Zarta Campo</span></p>
+  </div>
 
   <!-- ══════════════════════════════
        LIGHTBOX
@@ -370,6 +505,98 @@
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
+
+  <!-- ══════════════════════════════
+       MODAL — VESTUARIO
+  ══════════════════════════════ -->
+  <div id="modal-vestuario" class="xv-modal" role="dialog" aria-modal="true" aria-label="Vestuario">
+    <div class="xv-modal-card">
+      <button class="xv-modal-close" data-close="modal-vestuario" aria-label="Cerrar">✕</button>
+
+      <p class="xv-modal-label">SUGERENCIAS O INDICACIONES</p>
+
+      <div class="xv-modal-silhouettes">
+        <div class="silhouette-col">
+          <svg viewBox="0 0 60 100" fill="#F5D1D3" opacity="0.65" stroke="none">
+            <circle cx="30" cy="13" r="11"/>
+            <rect x="25" y="23" width="10" height="8" rx="3"/>
+            <path d="M18 31 Q12 52 10 75 Q10 90 15 92 L45 92 Q50 90 50 75 Q48 52 42 31 Q30 27 18 31Z"/>
+          </svg>
+          <p class="silhouette-role">MUJERES</p>
+          <p class="silhouette-desc">Vestido Cóctel</p>
+        </div>
+        <div class="silhouette-col">
+          <svg viewBox="0 0 60 100" fill="#F5D1D3" opacity="0.65" stroke="none">
+            <circle cx="30" cy="13" r="11"/>
+            <rect x="25" y="23" width="10" height="8" rx="3"/>
+            <path d="M18 31 Q30 27 42 31 L44 67 L16 67 Z"/>
+            <rect x="16" y="66" width="11" height="26" rx="3"/>
+            <rect x="33" y="66" width="11" height="26" rx="3"/>
+            <path d="M30 31 L27 43 L30 51 L33 43 Z" fill="#C9A3A5" opacity="1"/>
+          </svg>
+          <p class="silhouette-role">HOMBRES</p>
+          <p class="silhouette-desc">Traje Corbata</p>
+        </div>
+      </div>
+
+      <div class="xv-modal-divider"></div>
+
+      <p class="xv-modal-label">COLORES RESERVADOS</p>
+      <p class="xv-modal-text">Se reserva el color rosado pastel y toda clase de rosados</p>
+      <div class="color-swatches">
+        <span class="color-swatch" style="background:#FFD6E8"></span>
+        <span class="color-swatch" style="background:#F8C8DC"></span>
+        <span class="color-swatch" style="background:#EFB7D5"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       MODAL — NOTAS
+  ══════════════════════════════ -->
+  <div id="modal-notas" class="xv-modal" role="dialog" aria-modal="true" aria-label="Notas del evento">
+    <div class="xv-modal-card">
+      <button class="xv-modal-close" data-close="modal-notas" aria-label="Cerrar">✕</button>
+
+      <div class="nota-item">
+        <div class="nota-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="24" cy="24" r="20"/>
+            <line x1="10" y1="10" x2="38" y2="38"/>
+          </svg>
+        </div>
+        <p class="nota-title">NO NIÑOS</p>
+        <p class="nota-text">Este evento está pensado especialmente para jóvenes y adultos.</p>
+      </div>
+
+      <div class="nota-item">
+        <div class="nota-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="26" width="40" height="14" rx="3"/>
+            <path d="M10 26 L15 17 L33 17 L38 26"/>
+            <circle cx="13" cy="40" r="4"/>
+            <circle cx="35" cy="40" r="4"/>
+            <line x1="24" y1="4" x2="24" y2="17"/>
+            <rect x="19" y="2" width="10" height="7" rx="2"/>
+          </svg>
+        </div>
+        <p class="nota-title">ESTACIONAMIENTO</p>
+        <p class="nota-text">Contaremos con servicio de parqueadero para su comodidad.</p>
+      </div>
+
+      <div class="nota-item">
+        <div class="nota-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="24" cy="24" r="20"/>
+            <polyline points="24,12 24,24 32,30"/>
+          </svg>
+        </div>
+        <p class="nota-title">PUNTUALIDAD</p>
+        <p class="nota-text">Tu presencia puntual hará parte de este recuerdo inolvidable.</p>
+      </div>
+
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
