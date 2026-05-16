@@ -1,10 +1,37 @@
 /* ============================================================
-   PRELOADER
+   MÚSICA
+   Los navegadores bloquean autoplay con sonido sin interacción.
+   Solución: arranca silenciado (siempre permitido), se activa
+   con el primer gesto del usuario sin que lo note.
    ============================================================ */
+const musicBtn = document.getElementById('music-btn');
+const bgMusic  = document.getElementById('bg-music');
+
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('preloader').classList.add('hidden');
-  }, 2400);
+  if (!bgMusic) return;
+
+  bgMusic.volume = 0.65;
+  bgMusic.muted  = true;   // silenciado → el navegador lo permite siempre
+
+  bgMusic.play().then(() => {
+    musicBtn.classList.add('playing');
+
+    // Al primer gesto del usuario, activa el sonido
+    const unmute = () => {
+      bgMusic.muted = false;
+    };
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(e =>
+      document.addEventListener(e, unmute, { once: true, passive: true })
+    );
+  }).catch(() => {
+    // Si incluso el muted falla, espera primer clic
+    const startOnClick = () => {
+      bgMusic.muted = false;
+      bgMusic.play().then(() => musicBtn.classList.add('playing')).catch(() => {});
+    };
+    document.addEventListener('click', startOnClick, { once: true });
+    document.addEventListener('touchstart', startOnClick, { once: true });
+  });
 });
 
 /* ============================================================
@@ -21,18 +48,10 @@ window.addEventListener('load', () => {
   resize();
   window.addEventListener('resize', resize);
 
-  const COLORS = [
-    'hsl(345, 75%, 82%)',
-    'hsl(350, 70%, 78%)',
-    'hsl(340, 65%, 85%)',
-    'hsl(355, 60%, 88%)',
-    'hsl(338, 80%, 76%)',
-  ];
+  const COLORS = ['#F5D1D3', '#EFC5C7', '#F9DBDD', '#E8B8BB', '#FDE4E6'];
 
   class Petal {
-    constructor(randomY = false) {
-      this.init(randomY);
-    }
+    constructor(randomY = false) { this.init(randomY); }
     init(randomY) {
       this.x      = Math.random() * canvas.width;
       this.y      = randomY ? Math.random() * canvas.height : -20;
@@ -69,7 +88,6 @@ window.addEventListener('load', () => {
   }
 
   const petals = Array.from({ length: 40 }, () => new Petal(true));
-
   function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     petals.forEach(p => { p.update(); p.draw(); });
@@ -87,12 +105,8 @@ const drawer    = document.getElementById('nav-drawer');
 
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
-
-  // parallax hero
   const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
-  }
+  if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
 }, { passive: true });
 
 hamburger.addEventListener('click', () => {
@@ -113,25 +127,21 @@ drawer.querySelectorAll('a').forEach(a => {
    COUNTDOWN
    ============================================================ */
 const EVENT_DATE = new Date('2026-06-13T19:30:00');
-
-const cdDays    = document.getElementById('cd-days');
-const cdHours   = document.getElementById('cd-hours');
-const cdMinutes = document.getElementById('cd-minutes');
-const cdSeconds = document.getElementById('cd-seconds');
+const cdDays     = document.getElementById('cd-days');
+const cdHours    = document.getElementById('cd-hours');
+const cdMinutes  = document.getElementById('cd-minutes');
+const cdSeconds  = document.getElementById('cd-seconds');
 
 function pad(n) { return String(n).padStart(2, '0'); }
 
 function animateFlip(el, newVal) {
   if (el.textContent === newVal) return;
-
   el.classList.add('flip-out');
   setTimeout(() => {
     el.textContent = newVal;
     el.classList.remove('flip-out');
     el.classList.add('flip-in');
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      el.classList.remove('flip-in');
-    }));
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('flip-in')));
   }, 140);
 }
 
@@ -168,13 +178,13 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
    GALLERY LIGHTBOX
    ============================================================ */
 const GALLERY_SRCS = [
-  '../Fotos/Img (1).jpeg',
-  '../Fotos/Img (3).jpeg',
-  '../Fotos/Img (4).jpeg',
-  '../Fotos/Img (5).jpeg',
+  'Fotos/Img (1).jpeg',
+  'Fotos/Img (3).jpeg',
+  'Fotos/Img (4).jpeg',
+  'Fotos/Img (5).jpeg',
 ];
 
-let lbIndex = 0;
+let lbIndex    = 0;
 const lightbox = document.getElementById('lightbox');
 const lbImg    = document.getElementById('lb-img');
 
@@ -195,9 +205,7 @@ document.querySelectorAll('.gallery-item').forEach((item, i) => {
 document.getElementById('lb-close').addEventListener('click', closeLightbox);
 document.getElementById('lb-prev').addEventListener('click', () => openLightbox(lbIndex - 1));
 document.getElementById('lb-next').addEventListener('click', () => openLightbox(lbIndex + 1));
-
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('active')) return;
   if (e.key === 'Escape')     closeLightbox();
@@ -206,26 +214,29 @@ document.addEventListener('keydown', e => {
 });
 
 /* ============================================================
-   MUSIC WIDGET
+   MUSIC BUTTON — pause / play directo sobre el audio HTML5
    ============================================================ */
-const musicBtn   = document.getElementById('music-btn');
-const musicPanel = document.getElementById('music-panel');
-
 musicBtn.addEventListener('click', () => {
-  musicPanel.classList.toggle('open');
-  musicBtn.classList.toggle('playing', musicPanel.classList.contains('open'));
+  if (!bgMusic) return;
+  if (bgMusic.paused) {
+    bgMusic.play();
+    musicBtn.classList.remove('paused');
+    musicBtn.classList.add('playing');
+  } else {
+    bgMusic.pause();
+    musicBtn.classList.remove('playing');
+    musicBtn.classList.add('paused');
+  }
 });
 
 /* ============================================================
-   SMOOTH SCROLL FOR ANCHOR LINKS
+   SMOOTH SCROLL
    ============================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    const offset = 70;
-    const top    = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
   });
 });
