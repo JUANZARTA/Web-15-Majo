@@ -126,7 +126,7 @@ drawer.querySelectorAll('a').forEach(a => {
 /* ============================================================
    COUNTDOWN
    ============================================================ */
-const EVENT_DATE = new Date('2026-06-13T19:30:00');
+const EVENT_DATE = new Date('2026-12-06T19:30:00');
 const cdDays     = document.getElementById('cd-days');
 const cdHours    = document.getElementById('cd-hours');
 const cdMinutes  = document.getElementById('cd-minutes');
