@@ -32,16 +32,16 @@ document.querySelectorAll('[data-xv-wa]').forEach(el => {
 const musicBtn = document.getElementById('music-btn');
 const bgMusic  = document.getElementById('bg-music');
 
-window.addEventListener('load', () => {
+function startBgMusic() {
   if (!bgMusic) return;
 
   bgMusic.volume = 0.65;
-  bgMusic.muted  = true;   // silenciado → el navegador lo permite siempre
+  bgMusic.muted  = true;   // silenciado → el navegador lo permite siempre, sin esperar interacción
 
   bgMusic.play().then(() => {
     musicBtn.classList.add('playing');
 
-    // Al primer gesto del usuario, activa el sonido
+    // Al primer gesto del usuario (tap, click, scroll) activa el sonido
     const unmute = () => {
       bgMusic.muted = false;
     };
@@ -57,7 +57,13 @@ window.addEventListener('load', () => {
     document.addEventListener('click', startOnClick, { once: true });
     document.addEventListener('touchstart', startOnClick, { once: true });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startBgMusic);
+} else {
+  startBgMusic();
+}
 
 /* ============================================================
    PETALS CANVAS
@@ -218,10 +224,10 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
    GALLERY LIGHTBOX
    ============================================================ */
 const GALLERY_SRCS = [
-  'img/fotos/Img (1).jpeg',
-  'img/fotos/Img (3).jpeg',
-  'img/fotos/Img (4).jpeg',
-  'img/fotos/Img (5).jpeg',
+  'img/fotos/Img (1).JPG',
+  'img/fotos/Img (2).JPG',
+  'img/fotos/Img (3).jpg',
+  'img/fotos/Img (5).jpg',
 ];
 
 let lbIndex    = 0;
