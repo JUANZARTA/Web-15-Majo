@@ -32,16 +32,16 @@ document.querySelectorAll('[data-xv-wa]').forEach(el => {
 const musicBtn = document.getElementById('music-btn');
 const bgMusic  = document.getElementById('bg-music');
 
-function startBgMusic() {
+window.addEventListener('load', () => {
   if (!bgMusic) return;
 
   bgMusic.volume = 0.65;
-  bgMusic.muted  = true;   // silenciado → el navegador lo permite siempre, sin esperar interacción
+  bgMusic.muted  = true;   // silenciado → el navegador lo permite siempre
 
   bgMusic.play().then(() => {
     musicBtn.classList.add('playing');
 
-    // Al primer gesto del usuario (tap, click, scroll) activa el sonido
+    // Al primer gesto del usuario, activa el sonido
     const unmute = () => {
       bgMusic.muted = false;
     };
@@ -57,13 +57,7 @@ function startBgMusic() {
     document.addEventListener('click', startOnClick, { once: true });
     document.addEventListener('touchstart', startOnClick, { once: true });
   });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startBgMusic);
-} else {
-  startBgMusic();
-}
+});
 
 /* ============================================================
    PETALS CANVAS
