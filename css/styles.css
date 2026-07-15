@@ -230,10 +230,15 @@ a   { text-decoration: none; color: inherit; }
 .hero-bg {
   position: absolute;
   inset: 0;
+  background-image: url('../img/fotos/Img (4).jpg');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
   will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .hero-bg { background-image: url('../img/fotos/Img (6).jpg'); }
 }
 
 .hero-overlay {
